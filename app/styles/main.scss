@@ -1,0 +1,66 @@
+@import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap_responsive";
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+	margin-top: $baseLineHeight;
+}
+
+#primary {
+}
+
+#header {
+	h1 {
+		font-size: $baseFontSize + 2;
+		color: $linkColor;
+		margin-bottom: $baseLineHeight;
+	}
+	.about {
+		font-style: italic;
+		span {
+			@media screen and (min-width: $gridRowWidth768) {
+				display: block;
+			}
+		}
+		&:after {
+			content: "—";
+			display: block;
+			margin: $baseLineHeight 0;
+			color: #999;
+		}
+	}
+}
+
+#nav {
+	a {
+		color: $textColor;
+		text-decoration: underline;
+	}
+}
+
+#main {
+	margin-top: $baseLineHeight / 2;
+	.posts {
+		.row {
+			margin-bottom: $baseLineHeight * 2;
+		}
+		h2 {
+			font-size: $baseFontSize + 8;
+			margin: 0 0 $baseLineHeight;
+		}
+		.meta {
+			margin-top: $baseLineHeight * 3;
+			font-size: $baseFontSize - 1;
+			text-align: right;
+			list-style: none;
+			&, a {
+				color: #999;
+			}
+			a {
+				text-decoration: underline;
+			}
+		}
+	}
+}
