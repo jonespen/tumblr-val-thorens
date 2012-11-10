@@ -6,132 +6,134 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>{Title}</title>
+    <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
     {block:Description}
-        <meta name="description" content="{MetaDescription}" />
+    <meta name="description" content="{MetaDescription}" />
     {/block:Description}
     <meta name="viewport" content="width=device-width"/>
-
+    <meta name="text:Google Analytics ID" content=""/>
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
-
-    
-    <link rel="stylesheet" href="styles/main.css"/>
+    <link rel="stylesheet" href="http://dl.dropbox.com/u/830128/tumblr/styles/main.css"/>
     <script type="text/javascript" src="//use.typekit.net/uom7iue.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
-<body class="container">
+<body>
     <!--[if lt IE 7]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
-    <div class="row">
-        <div id="primary" class="span3">
-            <div id="header" role="banner">
-                <h1>{Title}</h1>
-                <p class="about">{Description}</p>
-            </div>
-            <ul id="nav" class="unstyled" role="navigation">
-                <li><a href="#">Om</a></li>
-                <li><a href="/archive">Arkiv</a></li>
-                <li class="external"><a href="#">Twitter</a></li>
-            </ul>
-        </div>
-        <div id="main" class="span8 offset1" role="main">
-            <ol class="posts unstyled">
-                {block:Posts}
-
-                {block:Text}
-                <li class="text row">
-
-                    {block:Title}
-                    <h2 class="span6 offset2"><a href="{Permalink}">{Title}</a></h2>
-                    {/block:Title}
-
-                    <ul class="meta span2">
-
-                        {block:Date}
-                        <li>{TimeAgo}</li>
-                        {/block:Date}
-
-                        <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">Comments</a></li>
-                    </ul>
-
-                    <div class="post span6">
-                        {Body}
-                    </div>
-                </li>
-                {/block:Text}
-
-                {block:Photo}
-                <li class="photo row">
-                    <ul class="meta span2">
-                        <li>10 dager siden</li>
-                        <li><a href="#">3 kommmentarer</a></li>
-                    </ul>
-                    <div class="post span6">
-                        <h2><a href="#">Sk8rboi</a></h2>
-                        <img src="images/sk8r.jpeg" alt="" />
-                    </div>
-                </li>
-                {/block:Photo}
-
-                {/block:Posts}
-            </ol>
-        </div>
-        <div id="footer">
-            {block:Pagination}
-                {block:PreviousPage}
-                    <a href="{PreviousPage}">Previous</a>
-                {/block:PreviousPage}
-
-                {block:JumpPagination length="5"}
-                    {block:CurrentPage}
-                        <span class="current_page">{PageNumber}</span>
-                    {/block:CurrentPage}
-
-                    {block:JumpPage}
-                        <a class="jump_page" href="{URL}">{PageNumber}</a>
-                    {/block:JumpPage}
-                {/block:JumpPagination}
-
-                {block:NextPage}
-                    <a href="{NextPage}">Next</a>
-                {/block:NextPage}
-            {/block:Pagination}
+    <div id="header" role="banner">
+        <div class="container">
+            <h1>{Title}</h1>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div id="colophon" class="span3">
+                <p class="about">{Description}</p>
+                <ul id="nav" class="unstyled" role="navigation">
+                    <li><a href="/archive">Arkiv</a></li>
+                    <li class="external"><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+            <div id="main" class="span8 offset1" role="main">
+                <ol class="posts unstyled">
+                    {block:Posts}
+                    <li class="row">
+                    {block:Text}
+                        {block:Title}
+                        <h2 class="span6"><a href="{Permalink}">{Title}</a></h2>
+                        {/block:Title}
+                        <div class="post text span6">
+                            {Body}
+                        </div>
+                    {/block:Text}
 
-    <!-- Add your site or application content here -->
-    
-    <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
-    <script type="text/javascript">
-      /**
-        * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-        */
-      (function() {
-       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-       dsq.src = 'http://jonespen.disqus.com/embed.js';
-       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=jonespen">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-    {/block:Permalink}<script type="text/javascript">
-    var disqus_shortname = 'jonespen';
-    (function () {
-      var s = document.createElement('script'); s.async = true;
-      s.src = 'http://jonespen.disqus.com/count.js';
-      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
+                    {block:Link}
+                        <div class="post link span6">
+                            <a href="{URL}" class="link">{Name}</a>
+                            {block:Description}
+                                <p class="caption">{Description}</p>
+                            {/block:Description}
+                        </div>
+                    {/block:Link}
 
+                    {block:Photo}
+                        <div class="post photo span6">
+                            {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" /> {LinkCloseTag}
+                            {block:Caption}
+                                <p class="caption">{Caption}</p>
+                            {/block:Caption}
+                        </div>
+                    {/block:Photo}
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+                    {block:Photoset}
+                        <div class="post photoset span6">
+                            {Photoset-500}
+                            {block:Caption}
+                                <p class="caption">{Caption}</p>
+                            {/block:Caption}
+                        </div>
+                    {/block:Photoset}
+
+                    {block:Video}
+                        <div class="post video span6">
+                            {Video-500}
+                            {block:Caption}
+                                <p class="caption">{Caption}</p>
+                            {/block:Caption}
+                        </div>
+                    {/block:Video}
+
+                    {block:Audio}
+                        <div class="post audio span6">
+                            {AudioPlayerBlack}
+                            {block:Caption}
+                                <p class="caption">{Caption}</p>
+                            {/block:Caption}
+                        </div>
+                    {/block:Audio}
+
+                        <ul class="meta span2">
+                            <li><a href="{Permalink}">{block:IndexPage}{TimeAgo}{/block:IndexPage}{block:PermalinkPage}{block:Date}{Month} {DayOfMonth}, {Year} ({12Hour}:{Minutes} {AmPm}){/block:Date}{/block:PermalinkPage}</a></li>
+                            {block:Tags}
+                                <li><a class="tag" href="{TagURL}"><span>#</span>{Tag}</a></li>
+                            {/block:Tags}
+                        </ul>
+                    </li>
+                    {/block:Posts}
+                </ol>
+            </div>
+            <div id="footer">
+                {block:Pagination}
+                    {block:PreviousPage}
+                        <a href="{PreviousPage}">Previous</a>
+                    {/block:PreviousPage}
+
+                    {block:JumpPagination length="5"}
+                        {block:CurrentPage}
+                            <span class="current_page">{PageNumber}</span>
+                        {/block:CurrentPage}
+
+                        {block:JumpPage}
+                            <a class="jump_page" href="{URL}">{PageNumber}</a>
+                        {/block:JumpPage}
+                    {/block:JumpPagination}
+
+                    {block:NextPage}
+                        <a href="{NextPage}">Next</a>
+                    {/block:NextPage}
+                {/block:Pagination}
+            </div>
+        </div>
+    </div>
+    {block:IfGoogleAnalyticsID}
     <script>
-        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        var _gaq=[['_setAccount','{text:Google Analytics ID}'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
+    {/block:IfGoogleAnalyticsID}
 </body>
 </html>

@@ -4,44 +4,72 @@
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-body {
-	margin-top: $baseLineHeight;
-}
-
-#primary {
-}
-
 #header {
-	h1 {
-		font-size: $baseFontSize + 2;
-		color: $linkColor;
+	background: url("../images/header-oslo.jpg") no-repeat;
+	-moz-background-size:cover;
+	-webkit-background-size:cover;
+	background-size: cover;
+	margin-bottom: $baseLineHeight * 1.5;
+	@media screen and (max-width: 768px) {
+		margin-left: -20px;
+		margin-right: -20px;
 		margin-bottom: $baseLineHeight;
+	}
+	h1 {
+		//font-size: $baseFontSize + 2;
+		font-style: italic;
+		line-height: $baseLineHeight * 12;
+		margin: 0;
+		color: $linkColor;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: $baseFontSize * 6;
+		@include opacity(50);
+		@media screen and (max-width: 480px) {
+			font-size: $baseFontSize * 2;
+		}
+		@media screen and (max-width: 767px) {
+			font-size: $baseFontSize * 4;
+		}
+		@media screen and (min-width: 1200px) {
+			font-size: $baseFontSize * 8;
+		}
+	}
+}
+
+#colophon {
+	margin-top: $baseLineHeight / 2;
+	@media screen and (max-width: 768px) {
+		text-align: center;
+	}
+	@media screen and (min-width: 769px) {
+		.about {
+			&:after {
+				content: "\2014";
+				display: block;
+				margin: $baseLineHeight 0;
+				color: #999;
+			}
+		}
 	}
 	.about {
 		font-style: italic;
-		span {
-			@media screen and (min-width: $gridRowWidth768) {
-				display: block;
-			}
-		}
-		&:after {
-			content: "—";
-			display: block;
-			margin: $baseLineHeight 0;
-			color: #999;
-		}
 	}
 }
 
 #nav {
 	a {
-		color: $textColor;
+		color: $grayLight;
 		text-decoration: underline;
+	}
+	@media screen and (max-width: 768px) {
+		li {
+			display: inline-block;
+		}
 	}
 }
 
 #main {
-	margin-top: $baseLineHeight / 2;
 	.posts {
 		.row {
 			margin-bottom: $baseLineHeight * 2;
@@ -51,12 +79,11 @@ body {
 			margin: 0 0 $baseLineHeight;
 		}
 		.meta {
-			margin-top: $baseLineHeight * 3;
 			font-size: $baseFontSize - 1;
 			text-align: right;
 			list-style: none;
 			&, a {
-				color: #999;
+				color: $grayLight;
 			}
 			a {
 				text-decoration: underline;
