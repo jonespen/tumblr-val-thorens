@@ -12,6 +12,7 @@
     {/block:Description}
     <meta name="viewport" content="width=device-width"/>
     <meta name="text:Google Analytics ID" content=""/>
+    <meta name="text:Disqus Shortname" content="" />
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     <link rel="stylesheet" href="http://dl.dropbox.com/u/830128/tumblr/styles/main.css"/>
@@ -33,7 +34,7 @@
                 <p class="about">{Description}</p>
                 <ul id="nav" class="unstyled" role="navigation">
                     <li><a href="/archive">Arkiv</a></li>
-                    <li class="external"><a href="#">Twitter</a></li>
+                    <!-- <li class="external"><a href="#">Twitter</a></li> -->
                 </ul>
             </div>
             <div id="main" class="span8 offset1" role="main">
@@ -95,14 +96,38 @@
                     {/block:Audio}
 
                         <ul class="meta span2">
-                            <li><a href="{Permalink}">{block:IndexPage}{TimeAgo}{/block:IndexPage}{block:PermalinkPage}{block:Date}{Month} {DayOfMonth}, {Year} ({12Hour}:{Minutes} {AmPm}){/block:Date}{/block:PermalinkPage}</a></li>
+                            <li><a href="{Permalink}">{block:IndexPage}{TimeAgo}{/block:IndexPage}{block:PermalinkPage}{block:Date}{Month} {DayOfMonth}, {Year} ({24Hour}:{Minutes}){/block:Date}{/block:PermalinkPage}</a></li>
                             {block:Tags}
                                 <li><a class="tag" href="{TagURL}"><span>#</span>{Tag}</a></li>
                             {/block:Tags}
+                            <li><a class="dsq-comment-count" href="{Permalink}#disqus_thread">comments</a></li>
                         </ul>
                     </li>
                     {/block:Posts}
                 </ol>
+                {block:IfDisqusShortname}
+                <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
+                <script type="text/javascript">
+                  /**
+                * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+                */
+                  (function() {
+                   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+                   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                  })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+                <a href="" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                {/block:Permalink}<script type="text/javascript">
+                var disqus_shortname = '{text:Disqus Shortname}';
+                (function () {
+                  var s = document.createElement('script'); s.async = true;
+                  s.src = 'http://{text:Disqus Shortname}.disqus.com/count.js';
+                  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                }());
+                </script>
+                {/block:IfDisqusShortname}
             </div>
             <div id="footer">
                 {block:Pagination}
