@@ -34,6 +34,11 @@
 		@media screen and (min-width: 1200px) {
 			font-size: $baseFontSize * 8;
 		}
+		a {
+			&:hover {
+				text-decoration: none; 
+			}
+		}
 	}
 }
 
