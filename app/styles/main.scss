@@ -76,7 +76,8 @@
 		}
 		h2 {
 			font-size: $baseFontSize + 8;
-			margin: 0 0 $baseLineHeight;
+			margin-bottom: $baseLineHeight;
+			line-height: $baseLineHeight + 12;
 		}
 		.meta {
 			font-size: $baseFontSize - 1;
